@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Proposal: ERP Transformation for VENCEMENT C.A.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .timeline {
+            position: relative;
+            width: 100%;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #e5e7eb;
+            transform: translateY(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            width: 100%;
+        }
+        .timeline-content {
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover .timeline-content {
+             border-color: #2D53DA;
+             transform: translateY(-5px);
+             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .timeline-dot {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: var(--left-pos);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #2D53DA;
+            border: 4px solid #fff;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+        .timeline-item-container {
+            position: relative;
+        }
+        .timeline-item-container::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #e5e7eb;
+            top: 100%;
+            left: 50%;
+            height: 2rem;
+            transform: translateX(-50%);
+        }
+        .timeline-item:nth-child(odd) .timeline-item-container::after {
+            top: auto;
+            bottom: 100%;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    
+    <!-- Palette: Energetic & Playful. #2D53DA, #39A866, #F5B82E, #E15454, #624DE3, #45B4A2 -->
+    <!-- NEITHER Mermaid JS NOR SVG were used in this output. All visuals are pure HTML/CSS/Canvas. -->
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="font-bold text-xl text-slate-900">VENCEMENT C.A.</span>
+                    <span class="mx-2 text-slate-400">|</span>
+                    <span class="font-semibold text-xl text-[#2D53DA]">ERP Odoo Digital Transformation</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#vision" class="text-slate-600 hover:bg-[#2D53DA] hover:text-white px-3 py-2 rounded-md text-sm font-medium">Vision</a>
+                        <a href="#inversion" class="text-slate-600 hover:bg-[#2D53DA] hover:text-white px-3 py-2 rounded-md text-sm font-medium">Investment</a>
+                        <a href="#cronograma" class="text-slate-600 hover:bg-[#2D53DA] hover:text-white px-3 py-2 rounded-md text-sm font-medium">Timeline</a>
+                        <a href="#comparativo" class="text-slate-600 hover:bg-[#2D53DA] hover:text-white px-3 py-2 rounded-md text-sm font-medium">Analysis</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+
+        <section id="vision" class="text-center bg-white rounded-lg shadow-lg p-8 mb-8 ring-1 ring-slate-200">
+            <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight">Strategic Transformation Proposal</h1>
+            <p class="mt-4 text-lg max-w-4xl mx-auto text-slate-600">Our objective is the centralization and integration of operational and administrative processes across VENCEMENT C.A.'s 10 national plants in Venezuela. Upon completion, the company will benefit from a single, robust, cloud-based Odoo ERP system, ensuring efficiency, total control, and a solid foundation for future growth.</p>
+        </section>
+
+        <section id="inversion" class="bg-white rounded-lg shadow-lg p-8 mb-8 ring-1 ring-slate-200">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">Investment Summary (Taxable Base)</h2>
+            <p class="text-slate-600 mb-6">A clear breakdown of the project's key components for a complete financial overview.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="bg-slate-50 border-l-4 border-[#2D53DA] rounded-r-lg p-6 shadow">
+                    <h3 class="text-lg font-semibold text-slate-500">Phase 1 Implementation</h3>
+                    <p class="text-4xl font-extrabold text-[#2D53DA] mt-2">$17,615</p>
+                    <p class="text-xs text-slate-400 mt-1">Foundation & Configuration</p>
+                </div>
+                <div class="bg-slate-50 border-l-4 border-[#39A866] rounded-r-lg p-6 shadow">
+                    <h3 class="text-lg font-semibold text-slate-500">Phase 2 Implementation</h3>
+                    <p class="text-4xl font-extrabold text-[#39A866] mt-2">$99,750</p>
+                    <p class="text-xs text-slate-400 mt-1">Deployment across 10 Plants</p>
+                </div>
+                <div class="bg-slate-50 border-l-4 border-[#F5B82E] rounded-r-lg p-6 shadow">
+                    <h3 class="text-lg font-semibold text-slate-500">Code Acquisition</h3>
+                    <p class="text-4xl font-extrabold text-[#F5B82E] mt-2">$295,000</p>
+                    <p class="text-xs text-slate-400 mt-1">Strategic Company Asset</p>
+                </div>
+                 <div class="bg-slate-50 border-l-4 border-[#E15454] rounded-r-lg p-6 shadow">
+                    <h3 class="text-lg font-semibold text-slate-500">Recurring Costs</h3>
+                    <p class="text-4xl font-extrabold text-[#E15454] mt-2">$145,200</p>
+                    <p class="text-xs text-slate-400 mt-1">Annual (Server + Maintenance)</p>
+                </div>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-1">
+                    <h3 class="text-2xl font-bold text-slate-800">Initial Investment Distribution</h3>
+                    <p class="text-slate-600 mt-2">This chart illustrates the breakdown of the project's primary investment. The largest portion is allocated to code acquisition, transforming it into a valuable and permanent asset for VENCEMENT C.A., eliminating reliance on annual licenses and ensuring long-term control.</p>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="chart-container mx-auto max-w-md">
+                        <canvas id="investmentDonutChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cronograma" class="bg-white rounded-lg shadow-lg p-8 mb-8 ring-1 ring-slate-200">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">Implementation Timeline</h2>
+            <p class="text-slate-600 mb-10">A visual roadmap detailing the project's key milestones over the first 6 months, ensuring a smooth and organized transition.</p>
+            
+            <div class="hidden md:block">
+                 <div class="timeline">
+                    <div class="flex justify-between w-full">
+                        <div class="w-1/5 text-center timeline-item" style="--left-pos: 0%;">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content rounded-lg p-4 bg-white shadow-sm">
+                                <p class="font-bold text-sm text-[#2D53DA]">Month 1</p>
+                                <p class="text-xs text-slate-600 mt-1">Phase 1: Foundation</p>
+                            </div>
+                        </div>
+                        <div class="w-1/5 text-center timeline-item" style="--left-pos: 25%;">
+                             <div class="timeline-dot"></div>
+                            <div class="timeline-content rounded-lg p-4 bg-white shadow-sm">
+                                <p class="font-bold text-sm text-[#2D53DA]">Month 2-3</p>
+                                <p class="text-xs text-slate-600 mt-1">Phase 2: Discovery</p>
+                            </div>
+                        </div>
+                        <div class="w-1/5 text-center timeline-item" style="--left-pos: 50%;">
+                             <div class="timeline-dot"></div>
+                            <div class="timeline-content rounded-lg p-4 bg-white shadow-sm">
+                                <p class="font-bold text-sm text-[#2D53DA]">Month 3-4</p>
+                                <p class="text-xs text-slate-600 mt-1">Phase 2: Configuration</p>
+                            </div>
+                        </div>
+                        <div class="w-1/5 text-center timeline-item" style="--left-pos: 75%;">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content rounded-lg p-4 bg-white shadow-sm">
+                                <p class="font-bold text-sm text-[#2D53DA]">Month 4-5</p>
+                                <p class="text-xs text-slate-600 mt-1">Phase 2: Training</p>
+                            </div>
+                        </div>
+                        <div class="w-1/5 text-center timeline-item" style="--left-pos: 100%;">
+                             <div class="timeline-dot"></div>
+                            <div class="timeline-content rounded-lg p-4 bg-white shadow-sm">
+                                <p class="font-bold text-sm text-[#2D53DA]">Month 6</p>
+                                <p class="text-xs text-slate-600 mt-1">Go-Live & Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="md:hidden space-y-8 mt-8">
+                <div class="flex items-center">
+                    <div class="bg-[#2D53DA] text-white rounded-full h-12 w-12 flex items-center justify-center font-bold">1</div>
+                    <div class="ml-4">
+                        <p class="font-bold text-slate-800">Month 1: Phase 1 Implementation (Foundation)</p>
+                        <p class="text-sm text-slate-600">Preliminary discovery and native configuration.</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                     <div class="bg-[#2D53DA] text-white rounded-full h-12 w-12 flex items-center justify-center font-bold">2</div>
+                    <div class="ml-4">
+                        <p class="font-bold text-slate-800">Month 2-3: Phase 2 Implementation (Discovery)</p>
+                         <p class="text-sm text-slate-600">Process mapping across all plants.</p>
+                    </div>
+                </div>
+                 <div class="flex items-center">
+                     <div class="bg-[#2D53DA] text-white rounded-full h-12 w-12 flex items-center justify-center font-bold">3</div>
+                    <div class="ml-4">
+                        <p class="font-bold text-slate-800">Month 3-4: Phase 2 Implementation (Configuration)</p>
+                         <p class="text-sm text-slate-600">Workflow configuration.</p>
+                    </div>
+                </div>
+                 <div class="flex items-center">
+                     <div class="bg-[#2D53DA] text-white rounded-full h-12 w-12 flex items-center justify-center font-bold">4</div>
+                    <div class="ml-4">
+                        <p class="font-bold text-slate-800">Month 4-5: Phase 2 Implementation (Training)</p>
+                         <p class="text-sm text-slate-600">Key user training.</p>
+                    </div>
+                </div>
+                 <div class="flex items-center">
+                     <div class="bg-[#39A866] text-white rounded-full h-12 w-12 flex items-center justify-center font-bold">5</div>
+                    <div class="ml-4">
+                        <p class="font-bold text-slate-800">Month 6: Go-Live</p>
+                        <p class="text-sm text-slate-600">System operation commencement and ongoing support.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                 <h3 class="text-2xl font-bold text-slate-800">Payment Flow Projection (24 Months)</h3>
+                 <p class="text-slate-600 mt-2 mb-6">This chart illustrates projected monthly disbursements, enabling precise financial planning. Investment peaks are observed during key implementation and code acquisition phases, followed by a stabilization in recurring operational costs.</p>
+                 <div class="chart-container h-96 max-h-[500px]">
+                    <canvas id="paymentLineChart"></canvas>
+                </div>
+                <div class="mt-4 text-center text-sm bg-blue-50 text-blue-800 p-3 rounded-lg">
+                    <strong>Note:</strong> Custom developments for VENCEMENT ($59,000) will be invoiced per delivered and validated milestone, thus not included in this fixed projection.
+                </div>
+            </div>
+        </section>
+
+        <section id="comparativo" class="bg-white rounded-lg shadow-lg p-8 ring-1 ring-slate-200">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">Strategic Comparative Analysis</h2>
+            <p class="text-slate-600 mb-10">Key decisions that define the long-term value of the project: software ownership and infrastructure.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-800">Code Acquisition vs. Annual License</h3>
+                    <p class="text-slate-600 mt-2 mb-6">The most important decision is between annually licensing software or owning it. Our proposal focuses on acquisition, transforming a perpetual expense into a strategic asset and eliminating vendor dependency.</p>
+                    <div class="bg-slate-50 p-6 rounded-lg">
+                        <h4 class="font-bold text-center mb-4">Software Ownership Cost over 5 Years</h4>
+                        <div class="chart-container h-64">
+                            <canvas id="tcoBarChart"></canvas>
+                        </div>
+                    </div>
+                     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                        <div class="bg-green-50 text-green-800 p-4 rounded-lg">
+                            <p class="font-bold">✓ Own Code</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Company asset</li>
+                                <li>Unlimited users</li>
+                                <li>Full control and flexibility</li>
+                                <li>No risk of lockout</li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-50 text-red-800 p-4 rounded-lg">
+                             <p class="font-bold">✗ Odoo Enterprise License</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Recurring operational expense</li>
+                                <li>Limited to 500 users</li>
+                                <li>Vendor dependency</li>
+                                <li>Risk if payments cease</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-800">Infrastructure: Cloud VPS vs. Physical Servers</h3>
+                    <p class="text-slate-600 mt-2 mb-6">We propose a centralized Virtual Private Server (VPS) infrastructure, eliminating the complexity and high costs of maintaining 11 distinct physical data centers. This ensures scalability, security, and high availability.</p>
+                    <div class="bg-slate-50 p-6 rounded-lg">
+                        <h4 class="font-bold text-center mb-4">Infrastructure Attribute Comparison</h4>
+                        <div class="chart-container h-64">
+                            <canvas id="infraRadarChart"></canvas>
+                        </div>
+                    </div>
+                     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                        <div class="bg-green-50 text-green-800 p-4 rounded-lg">
+                            <p class="font-bold">✓ Centralized Cloud VPS</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Low initial cost</li>
+                                <li>On-demand scalability</li>
+                                <li>High security and redundancy</li>
+                                <li>Managed maintenance</li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-50 text-red-800 p-4 rounded-lg">
+                             <p class="font-bold">✗ Physical Servers (x11)</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>High capital cost</li>
+                                <li>Complex scalability</li>
+                                <li>Risk of obsolescence</li>
+                                <li>High maintenance burden</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-6 bg-slate-800 text-slate-400 text-sm">
+        <p>ERP Odoo Implementation Proposal for VENCEMENT C.A.</p>
+        <p>&copy; 2025 Css Consultores 1010, C.A. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const energeticPlayfulPalette = ['#2D53DA', '#39A866', '#F5B82E', '#E15454', '#624DE3', '#45B4A2'];
+            const brilliantBluesPalette = ['#003f5c', '#7a5195', '#ef5675', '#ffa600'];
+
+            const wrapLabel = (str, maxLen = 16) => {
+                if (str.length <= maxLen) {
+                    return str;
+                }
+                const words = str.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + word).length > maxLen) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                }
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                return Array.isArray(label) ? label.join(' ') : label;
+            };
+
+            const createInvestmentDonutChart = () => {
+                const ctx = document.getElementById('investmentDonutChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [
+                            'Implementation (Phases 1 & 2)',
+                            'Code Acquisition',
+                            'Recurring Services (First Year)',
+                        ],
+                        datasets: [{
+                            label: 'Investment Breakdown',
+                            data: [117365, 295000, 145200],
+                            backgroundColor: [energeticPlayfulPalette[0], energeticPlayfulPalette[2], energeticPlayfulPalette[3]],
+                            borderColor: '#ffffff',
+                            borderWidth: 4,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                   padding: 20
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        },
+                        cutout: '60%'
+                    }
+                });
+            };
+
+            const createPaymentLineChart = () => {
+                const ctx = document.getElementById('paymentLineChart').getContext('2d');
+                const labels = Array.from({ length: 24 }, (_, i) => `Month ${i + 1}`);
+                const data = [
+                    17615, 41270, 31295, 21320, 11345, 12100, 12100, 
+                    41600, 12100, 65200, 12100, 57364, 
+                    21964, 21964, 21964, 21964, 21964, 21964, 
+                    21964, 21964, 21964, 21964, 21964, 21964
+                ];
+
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Projected Monthly Payment (USD)',
+                            data: data,
+                            borderColor: energeticPlayfulPalette[0],
+                            backgroundColor: 'rgba(45, 83, 218, 0.1)',
+                            fill: true,
+                            tension: 0.2,
+                            pointBackgroundColor: energeticPlayfulPalette[0],
+                            pointBorderColor: '#fff',
+                            pointHoverRadius: 7,
+                            pointHoverBorderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return '$' + new Intl.NumberFormat('en-US').format(value);
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        },
+                         hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        }
+                    }
+                });
+            };
+            
+            const createTcoBarChart = () => {
+                const ctx = document.getElementById('tcoBarChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            wrapLabel('Odoo Enterprise (Subscription)'),
+                            wrapLabel('Proprietary Code (Acquisition)')
+                        ],
+                        datasets: [{
+                            label: 'Cost over 5 Years (USD)',
+                            data: [404856, 295000],
+                            backgroundColor: [energeticPlayfulPalette[3], energeticPlayfulPalette[1]],
+                            borderRadius: 6,
+                            borderWidth: 0,
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback,
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.x !== null) {
+                                            label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.x);
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                           x: {
+                                ticks: {
+                                    callback: function(value) {
+                                        return '$' + (value / 1000) + 'K';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+
+            const createInfraRadarChart = () => {
+                const ctx = document.getElementById('infraRadarChart').getContext('2d');
+                const data = {
+                    labels: [
+                        'Flexibility & Scalability', 
+                        'Security & Redundancy', 
+                        'Low Maintenance', 
+                        'Low Obsolescence Risk', 
+                        'Low Initial Cost'
+                    ],
+                    datasets: [
+                    {
+                        label: 'Centralized VPS',
+                        data: [5, 5, 5, 5, 5],
+                        fill: true,
+                        backgroundColor: 'rgba(57, 168, 102, 0.2)',
+                        borderColor: energeticPlayfulPalette[1],
+                        pointBackgroundColor: energeticPlayfulPalette[1],
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: energeticPlayfulPalette[1]
+                    }, {
+                        label: 'Physical Servers',
+                        data: [2, 2, 1, 1, 1],
+                        fill: true,
+                        backgroundColor: 'rgba(225, 84, 84, 0.2)',
+                        borderColor: energeticPlayfulPalette[3],
+                        pointBackgroundColor: energeticPlayfulPalette[3],
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: energeticPlayfulPalette[3]
+                    }]
+                };
+
+                new Chart(ctx, {
+                    type: 'radar',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        },
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 5,
+                                min: 0,
+                                ticks: {
+                                    stepSize: 1,
+                                    display: false
+                                },
+                                pointLabels: {
+                                    font: {
+                                        size: 10
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+
+            createInvestmentDonutChart();
+            createPaymentLineChart();
+            createTcoBarChart();
+            createInfraRadarChart();
+        });
+    </script>
+</body>
+</html>
